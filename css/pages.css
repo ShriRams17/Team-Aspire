@@ -1,0 +1,33 @@
+/* Styles for payment.html and track.html (uses the variables from style.css) */
+.page { max-width: 560px; margin: 2rem auto; padding: 0 1rem; }
+.box { padding: 1.5rem; margin-bottom: 1.2rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.box h2 { font-size: 1.3rem; }
+.row { display: flex; justify-content: space-between; padding: .3rem 0; }
+.row.total { margin-top: .4rem; padding-top: .6rem; border-top: 1px solid var(--line); font-weight: 800; font-size: 1.1rem; }
+
+.methods { display: flex; gap: .6rem; margin-bottom: 1rem; }
+.methods label { flex: 1; padding: .6rem; text-align: center; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; }
+.methods input { display: none; }
+.methods label:has(input:checked) { border-color: var(--gold); background: var(--tint); font-weight: 700; }
+
+.field { display: block; margin-bottom: .8rem; font-size: .9rem; }
+.field input { width: 100%; padding: .6rem .9rem; margin-top: .2rem; border: 1px solid var(--line); border-radius: 10px; }
+.two { display: flex; gap: .8rem; }
+.note { color: var(--muted); font-size: .85rem; }
+.error { color: #c0392b; min-height: 1.4em; font-size: .9rem; }
+
+/* Tracking steps */
+.track-form { display: flex; gap: .5rem; margin-bottom: 1rem; }
+.track-form input { flex: 1; padding: .6rem .9rem; border: 1px solid var(--line); border-radius: 10px; text-transform: uppercase; }
+.timeline li { position: relative; padding: 0 0 1.4rem 3rem; color: var(--muted); }
+.timeline li::before { content: ""; position: absolute; left: 14px; top: 30px; bottom: 0; width: 2px; background: var(--line); }
+.timeline li:last-child::before { display: none; }
+.timeline .dot { position: absolute; left: 0; top: 0; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--line); }
+.timeline li.done { color: var(--ink); }
+.timeline li.done .dot { background: var(--green); color: #fff; }
+.timeline li.now .dot { background: var(--gold); animation: pulse 1.2s infinite; }
+.timeline li.now { color: var(--ink); font-weight: 700; }
+.timeline b { display: block; }
+@keyframes pulse { 50% { transform: scale(1.15); } }
+
+.thumb { width: 28px; height: 28px; margin-right: .3rem; border-radius: 6px; object-fit: cover; vertical-align: middle; }

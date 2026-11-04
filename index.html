@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GO Delivery — Food Delivery in Your City</title>
+  <meta name="description" content="GO Delivery: Oor Suvai. Oru Click-il! Fast, fresh food delivery in your city.">
+  <!-- First visit in a browser session: show the intro page, then come back here. -->
+  <script>try { if (!sessionStorage.getItem("goIntroSeen")) location.replace("intro.html"); } catch (e) {}</script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav">
+    <a href="#home" class="logo" aria-label="GO Delivery, back to top"><span class="logo__go">GO</span><span class="logo__word">Delivery</span></a>
+    <nav aria-label="Main navigation" id="mainNav">
+      <ul class="nav__links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#service">Service</a></li>
+        <li><a href="#discover">Discover</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="track.html">Track Order</a></li>
+      </ul>
+    </nav>
+    <div class="nav__tools">
+      <label class="search">
+        <span class="sr-only">Search food</span>
+        <input type="search" id="search" placeholder="Search food…" autocomplete="off">
+      </label>
+      <button class="cart-btn" id="cartBtn" aria-label="Open cart">🛒<span class="cart-btn__count" id="cartCount">0</span></button>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mainNav"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero__text">
+        <p class="eyebrow">Oor Suvai. Oru Click-il!</p>
+        <h1>We have <span>faster Delivery</span> in your City.</h1>
+        <p class="hero__sub">We are the fastest and tastiest food delivery service in your city.</p>
+        <div class="hero__actions">
+          <a href="#menu" class="btn">Order Now</a>
+          <a href="#service" class="btn btn--ghost">Order process</a>
+        </div>
+        <ul class="hero__facts" aria-label="Highlights">
+          <li>⏱️ <b>30 min</b> average delivery</li>
+          <li>📍 <b>Live</b> order tracking</li>
+          <li>🏷️ <b>10% OFF</b> with FAST10</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="section" id="menu">
+      <h2>Popular Food</h2>
+      <div class="chips" id="chips" role="group" aria-label="Food categories">
+        <button class="chip is-active" data-cat="all" aria-pressed="true">All</button>
+        <button class="chip" data-cat="pizza" aria-pressed="false">Pizza</button>
+        <button class="chip" data-cat="pasta" aria-pressed="false">Pasta</button>
+        <button class="chip" data-cat="burger" aria-pressed="false">Burger</button>
+        <button class="chip" data-cat="drinks" aria-pressed="false">Drinks</button>
+        <button class="chip" data-cat="desserts" aria-pressed="false">Desserts</button>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- OFFERS -->
+    <section class="section section--tint" id="discover">
+      <h2>Offers for You</h2>
+      <div class="offers">
+        <article class="offer"><h3>10% OFF</h3><p>On your whole order</p><button class="btn btn--small" data-code="FAST10">Use FAST10</button></article>
+        <article class="offer"><h3>Free delivery</h3><p>On orders above ₹500</p><button class="btn btn--small" data-scroll="#menu">Order now</button></article>
+        <article class="offer"><h3>₹50 OFF</h3><p>On orders above ₹400</p><button class="btn btn--small" data-code="SAVE50">Use SAVE50</button></article>
+      </div>
+    </section>
+
+    <!-- ORDER PROCESS -->
+    <section class="section" id="service">
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><span>1</span><h3>Choose</h3><p>Pick your favourite food from the menu.</p></li>
+        <li><span>2</span><h3>Order</h3><p>Add to cart and place your order.</p></li>
+        <li><span>3</span><h3>Enjoy</h3><p>Our rider brings it hot to your door.</p></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <p><b>GO Delivery</b> · Sample project, not a real delivery service. Orders are not sent anywhere.</p>
+    <p>Phone: +91 00000 00000 · hello@godelivery.example · © <span id="year">2026</span> · <a href="intro.html">Replay intro</a></p>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Your cart" aria-hidden="true">
+    <div class="drawer__head"><h2>Your Cart</h2><button id="closeCart" aria-label="Close cart">×</button></div>
+    <div class="drawer__body" id="cartItems"></div>
+    <div class="drawer__foot">
+      <form class="coupon" id="couponForm">
+        <label class="sr-only" for="coupon">Coupon code</label>
+        <input id="coupon" placeholder="Coupon (try FAST10)" autocomplete="off">
+        <button class="btn btn--small" type="submit">Apply</button>
+      </form>
+      <p class="coupon__msg" id="couponMsg" role="status"></p>
+      <dl class="totals">
+        <div><dt>Subtotal</dt><dd id="subtotal">₹0</dd></div>
+        <div><dt>Discount</dt><dd id="discount">−₹0</dd></div>
+        <div><dt>Delivery</dt><dd id="delivery">₹0</dd></div>
+        <div class="totals__total"><dt>Total</dt><dd id="total">₹0</dd></div>
+      </dl>
+      <button class="btn btn--block" id="placeOrder" disabled>Place Order</button>
+    </div>
+  </aside>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Track Order — GO Delivery</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <header class="nav">
+    <a href="index.html" class="logo"><span class="logo__go">GO</span><span class="logo__word">Delivery</span></a>
+    <a href="index.html#menu">Menu</a>
+  </header>
+
+  <main class="page">
+    <section class="box">
+      <h2>Track Your Order</h2>
+      <form class="track-form" id="trackForm">
+        <input id="orderId" placeholder="Order ID, e.g. GO1234" aria-label="Order ID">
+        <button class="btn btn--small" type="submit">Track</button>
+      </form>
+      <p class="error" id="msg" role="alert"></p>
+    </section>
+
+    <section class="box" id="result" hidden>
+      <h2 id="title"></h2>
+      <p class="note" id="info"></p>
+      <ol class="timeline" id="timeline"></ol>
+    </section>
+  </main>
+
+  <script src="js/track.js"></script>
+</body>
+</html>

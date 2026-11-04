@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment — GO Delivery</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <header class="nav">
+    <a href="index.html" class="logo"><span class="logo__go">GO</span><span class="logo__word">Delivery</span></a>
+    <a href="track.html">Track order</a>
+  </header>
+
+  <main class="page">
+    <section class="box">
+      <h2>Order Summary</h2>
+      <div id="summary"></div>
+    </section>
+
+    <section class="box">
+      <h2>Payment</h2>
+      <form id="payForm">
+        <div class="methods">
+          <label><input type="radio" name="method" value="upi" checked> 📱 UPI</label>
+          <label><input type="radio" name="method" value="card"> 💳 Card</label>
+          <label><input type="radio" name="method" value="cod"> 💵 Cash</label>
+        </div>
+
+        <div id="upiBox">
+          <label class="field">UPI ID
+            <input id="upi" placeholder="name@upi">
+          </label>
+        </div>
+
+        <div id="cardBox" hidden>
+          <label class="field">Card number
+            <input id="cardNo" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric">
+          </label>
+          <div class="two">
+            <label class="field">Expiry <input id="exp" placeholder="MM/YY" maxlength="5"></label>
+            <label class="field">CVV <input id="cvv" placeholder="123" maxlength="3" inputmode="numeric" type="password"></label>
+          </div>
+        </div>
+
+        <p id="codBox" class="note" hidden>Pay in cash when the rider arrives.</p>
+
+        <p class="error" id="error" role="alert"></p>
+        <button class="btn btn--block" id="payBtn" type="submit">Pay Now</button>
+        <p class="note">Demo only: no real payment happens. Never type real card details here.</p>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/payment.js"></script>
+</body>
+</html>
